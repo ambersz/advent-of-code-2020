@@ -22,7 +22,7 @@ fs.readFile("./template.js", "utf-8", (err, data) => {
   if (fs.existsSync(inputPath)) {
     console.log("input file already exists, skipping input code templating");
   } else {
-    fs.writeFile(inputPath, "", "utf8", (err) => {
+    fs.writeFile(inputPath, "export default '';", "utf8", (err) => {
       if (err) {
         console.log(err);
       }
