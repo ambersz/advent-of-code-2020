@@ -18,6 +18,10 @@ function inputSetup() {
         }
       }
       return answerMap;
+    })
+    .map((a) => {
+      const b = { "#": 0 };
+      return { ...b, ...a };
     });
 }
 
@@ -27,15 +31,10 @@ function partOne() {
 
 function partTwo() {
   return _.sum(
-    processedInput
-      .map((a) => {
-        const b = { "#": 0 };
-        return { ...b, ...a };
-      })
-      .map((a) => {
-        let qs = Object.keys(a);
-        return qs.filter((q) => a[q] === a["#"] + 1).length;
-      })
+    processedInput.map((a) => {
+      let qs = Object.keys(a);
+      return qs.filter((q) => a[q] === a["#"] + 1).length;
+    })
   );
 }
 
