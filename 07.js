@@ -46,9 +46,26 @@ function partOne() {
 }
 
 function partTwo() {
-  processedInput;
+  function countTotalBags(color) {
+    const rule = _.find(processedInput, (a) => a.name === color);
+    !rule && console.log(color);
+    let count;
+    if (!rule || rule.childrenNames[0] === "o other") {
+      count = 1;
+    } else {
+      count =
+        _.sum(rule.children.map((a) => countTotalBags(a.name) * a.count)) + 1;
+    }
+    console.log(`${color} bags contain ${count} bags.`);
+    return count;
+  }
+  // console.log(processedInput.filter((a) => a.childrenNames[0] === "o other"));
+  // console.log(processedInput.length);
+  // console.log(_.uniq(processedInput.map((a) => a.name)).length);
+
+  return countTotalBags("shiny gold") - 1;
 }
 
 const processedInput = inputSetup();
-console.log(partOne());
-// console.log(partTwo());
+// console.log(partOne());
+console.log(partTwo());
