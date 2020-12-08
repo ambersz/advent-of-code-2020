@@ -7,11 +7,11 @@ function inputSetup() {
 }
 
 function partOne() {
-  processedInput;
+  console.log(processedInput);
 }
 
 function partTwo() {
-  processedInput;
+  console.log(processedInput);
 }
 
 const processedInput = inputSetup();
