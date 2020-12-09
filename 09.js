@@ -25,9 +25,28 @@ function partOne() {
 }
 
 function partTwo() {
-  console.log(processedInput);
+  let start = 0;
+  let end = 2;
+  let sum = 0;
+  while (true) {
+    const slice = input.slice(start, end);
+    sum = _.sum(slice);
+    if (sum < invalidNumber) {
+      if (end < input.length) {
+        end++;
+      } else {
+        start++;
+        end = start + 2;
+      }
+    } else if (sum === invalidNumber) {
+      return _.min(slice) + _.max(slice);
+    } else {
+      start++;
+      end = start + 2;
+    }
+  }
 }
 
 const processedInput = inputSetup();
-console.log(partOne());
-// console.log(partTwo());
+const invalidNumber = partOne();
+console.log(partTwo());
