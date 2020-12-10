@@ -1,8 +1,11 @@
-import input from "./inputs/input-##.js";
+const day = "##";
 import _ from "lodash";
-import { YEAR } from "./constants.js";
+import { loadOrGetInputFile } from "./common.js";
+let input = await loadOrGetInputFile(day);
 
-function inputSetup() {
+async function inputSetup() {
+  const lines = input.split("\n");
+  console.log(input);
   return { input };
 }
 
@@ -15,5 +18,8 @@ function partTwo() {
 }
 
 const processedInput = inputSetup();
+// /* Comment toggle this line to run only part one or only part two
 console.log(partOne());
-// console.log(partTwo());
+/*/ // Comment toggle this line to run both part one and part two
+console.log(partTwo());
+// */

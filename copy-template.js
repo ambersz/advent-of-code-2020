@@ -1,4 +1,5 @@
 import fs from "fs";
+import { loadOrGetInputFile } from "./common";
 var myArgs = process.argv.slice(2);
 const day = myArgs[0];
 if (day === undefined) console.error("invalid day argument"), process.exit(1);
@@ -17,15 +18,6 @@ fs.readFile("./template.js", "utf-8", (err, data) => {
       if (err) console.log(err);
     });
   }
-
-  const inputPath = `./inputs/input-${suffix}.js`;
-  if (fs.existsSync(inputPath)) {
-    console.log("input file already exists, skipping input code templating");
-  } else {
-    fs.writeFile(inputPath, "export default ``;", "utf8", (err) => {
-      if (err) {
-        console.log(err);
-      }
-    });
-  }
 });
+
+loadOrGetInputFile(suffix);
