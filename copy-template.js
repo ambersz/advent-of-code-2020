@@ -1,5 +1,5 @@
 import fs from "fs";
-import { loadOrGetInputFile } from "./common";
+import { loadOrGetInputFile } from "./common.js";
 var myArgs = process.argv.slice(2);
 const day = myArgs[0];
 if (day === undefined) console.error("invalid day argument"), process.exit(1);

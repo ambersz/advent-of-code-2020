@@ -1,7 +1,9 @@
 const day = "##";
 import _ from "lodash";
 import { loadOrGetInputFile } from "./common.js";
-let input = await loadOrGetInputFile(day);
+const customInputPath = process.argv[2];
+let input = await loadOrGetInputFile(day, customInputPath);
+
 
 async function inputSetup() {
   const lines = input.split("\n");

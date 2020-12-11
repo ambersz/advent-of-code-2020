@@ -2,18 +2,18 @@ import fs from "fs";
 import path from "path";
 import axios from "axios";
 import { YEAR } from "./constants.js";
-export async function loadOrGetInputFile(id) {
+export async function loadOrGetInputFile(id, customInputPath = null) {
   if (id.length < 2) {
     id = id.padStart(2, "0");
   }
   const inputRelPath = `../inputs/input-${id}.txt`;
-  const hasCustomInputPath = !!process.argv[2];
+  const hasCustomInputPath = !!customInputPath;
   const inputFileName =
-    process.argv[2] ?? path.resolve(process.argv[1], inputRelPath);
+    customInputPath ?? path.resolve(process.argv[1], inputRelPath);
   let input;
   if (hasCustomInputPath) {
-    if (!fs.existsSync(hasCustomInputPath)) {
-      console.error(`Custom input file ${hasCustomInputPath} does not exist`);
+    if (!fs.existsSync(inputFileName)) {
+      console.error(`Custom input file ${inputFileName} does not exist`);
       process.exit(1);
     } else {
       input = fs.readFileSync(inputFileName, "utf-8");
